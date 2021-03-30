@@ -25,14 +25,16 @@ struct _debug {
 #define debug(x) IF_ELSE(x)(auto _##__COUNTER__ = debug (__PRETTY_FUNCTION__))();
 
 #define debug_called_from string _function_line = to_string (__LINE__), string _called_from_function = __builtin_FUNCTION(), int _called_from_line = __builtin_LINE()
-#define debug_print_called_from(_color, index) out(index, text {string (__FUNCTION__) + string ("::") +  _function_line, string (_color)}, _called_from_function + "::"  + to_string(_called_from_line)); cout << white;
+#define debug_print_called_from(_color, index) out (index, _color + string (__FUNCTION__) + string ("::") +  _function_line, _color + _called_from_function + "::"  + to_string(_called_from_line)); cout << white;
 #define D01(color, index) out(index, text {string (__FUNCTION__) + to_string(__LINE__), string (color)}); cout << white;
 #define BWRITE(color, index, ...) for(int _j = 0; _j < index; ++_j)cout << "\t"; cout << white << " B  " << color; cout << BOOST_PP_STRINGIZE (__VA_ARGS__) << endl; cout << white;
 #define EWRITE(color, index, ...) for(int _j = 0; _j < index; ++_j)cout << "\t"; cout << cyan << " E  " << color; cout << BOOST_PP_STRINGIZE (__VA_ARGS__) << endl; cout << white;
 
 
-template <int shiftFirstLeft = 0, int mellanrum = 30>
-void out (auto&& s1, auto&&... s) {
+
+
+template <int mellanrum = 30>
+void out (int shiftFirstLeft, auto&& s1, auto&&... s) {
     for(int i = 0; i < shiftFirstLeft; ++i)
     {
         cout << "\t";
@@ -61,6 +63,7 @@ void out (auto&& s1, auto&&... s) {
 
 //    color << "[" << index << "] " << s << setw(20) << s2 << endl;
 }
+
 
 //void out (auto&& s, auto&& s2, int index) {
 //    out (white, forward<decltype(s)> (s), forward<decltype(s2)> (s2), index);
