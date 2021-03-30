@@ -14,6 +14,10 @@ if (NOT TARGET ph_time)
 	add_subdirectory (dependencies/ph_time)
 endif ()
 
+if (NOT TARGET ph_color)
+	add_subdirectory (dependencies/ph_color)
+endif ()
+
 if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 	
 	# Let's ensure -std=g++xx instead of -std=c++xx
