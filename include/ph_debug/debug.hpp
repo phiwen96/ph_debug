@@ -38,7 +38,7 @@ struct _debug {
  out (0, "hej", "då", "kiss");
  out (0, "hej", "då");
  */
-template <bool endline = true, int mellanrum = 70>
+template <bool endline = true, int mellanrum = 30>
 void out (int shiftFirstLeft, auto&& s1, auto&&... s) {
     for(int i = 0; i < shiftFirstLeft; ++i)
     {
@@ -50,9 +50,10 @@ void out (int shiftFirstLeft, auto&& s1, auto&&... s) {
 //    cout << right << setw(0) << "[" << index << "] " << s << left << "\t" << s2 << endl;
 //    cout << s << internal << std::setfill('*') << setw(40) << s2 << "\n";
 //    Green b;
-    cout << black << " •  " << white << left << setw (mellanrum) << s1;
     
-    ((cout << setw (mellanrum) << black << " •  " << white << setw (mellanrum) << left << s ), ...);
+    cout <<  black << " •  " << white  << left << setw (70) << s1;
+//    cout << left << setw (10);
+    ((cout << black << " •  " << white << s), ...);
     cout << setw (0);
     
     if constexpr (endline)
