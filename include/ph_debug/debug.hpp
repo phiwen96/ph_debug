@@ -53,7 +53,7 @@ void out (int shiftFirstLeft, auto&& s1, auto&&... s) {
     
     cout <<  black << " •  " << white  << left << setw (70) << s1;
 //    cout << left << setw (10);
-    ((cout << black << " •  " << white << s << left << setw (20)), ...);
+    ((cout << black << " •  " << white << left << setw (30) << s), ...);
     cout << setw (0);
     
     if constexpr (endline)
