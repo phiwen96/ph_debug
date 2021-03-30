@@ -30,15 +30,15 @@ struct _debug {
 #define BWRITE(color, index, ...) for(int _j = 0; _j < index; ++_j)cout << "\t"; cout << white << " B  " << color; cout << BOOST_PP_STRINGIZE (__VA_ARGS__) << endl; cout << white;
 #define EWRITE(color, index, ...) for(int _j = 0; _j < index; ++_j)cout << "\t"; cout << cyan << " E  " << color; cout << BOOST_PP_STRINGIZE (__VA_ARGS__) << endl; cout << white;
 
-#define debug_class_print_called_from(_color, index) out (index, string (_color) + BOOST_PP_STRINGIZE (class_name) + green + "::" + white + string (__FUNCTION__), white + _called_from_function + "::"  + to_string(_called_from_line)); cout << white;
-
+#define debug_class_print_called_from(_color, index) out (index, string (_color) + class_name + green + "::" + white + string (__FUNCTION__), white + _called_from_function + "::"  + to_string(_called_from_line)); cout << white;
+#define debug_called_from_none string _called_from_function = ""; int _called_from_line = 0; int _function_line = 0;
 
 
 /**
  out (0, "hej", "då", "kiss");
  out (0, "hej", "då");
  */
-template <bool endline = true, int mellanrum = 50>
+template <bool endline = true, int mellanrum = 70>
 void out (int shiftFirstLeft, auto&& s1, auto&&... s) {
     for(int i = 0; i < shiftFirstLeft; ++i)
     {
