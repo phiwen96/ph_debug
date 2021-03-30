@@ -4,3 +4,6 @@
 [submodule "dependencies/ph_time"]
 	path = dependencies/ph_time
 	url = https://github.com/phiwen96/ph_time
+[submodule "dependencies/ph_color"]
+	path = dependencies/ph_color
+	url = https://github.com/phiwen96/ph_color
