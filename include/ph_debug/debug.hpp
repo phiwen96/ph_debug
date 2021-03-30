@@ -30,13 +30,15 @@ struct _debug {
 #define BWRITE(color, index, ...) for(int _j = 0; _j < index; ++_j)cout << "\t"; cout << white << " B  " << color; cout << BOOST_PP_STRINGIZE (__VA_ARGS__) << endl; cout << white;
 #define EWRITE(color, index, ...) for(int _j = 0; _j < index; ++_j)cout << "\t"; cout << cyan << " E  " << color; cout << BOOST_PP_STRINGIZE (__VA_ARGS__) << endl; cout << white;
 
+#define debug_class_print_called_from(_color, index) out (index, string (_color) + BOOST_PP_STRINGIZE (class_name) + green + "::" + white + string (__FUNCTION__), white + _called_from_function + "::"  + to_string(_called_from_line)); cout << white;
+
 
 
 /**
  out (0, "hej", "då", "kiss");
  out (0, "hej", "då");
  */
-template <bool endline = true, int mellanrum = 30>
+template <bool endline = true, int mellanrum = 50>
 void out (int shiftFirstLeft, auto&& s1, auto&&... s) {
     for(int i = 0; i < shiftFirstLeft; ++i)
     {
@@ -44,12 +46,13 @@ void out (int shiftFirstLeft, auto&& s1, auto&&... s) {
     }
     
     
+    
 //    cout << right << setw(0) << "[" << index << "] " << s << left << "\t" << s2 << endl;
 //    cout << s << internal << std::setfill('*') << setw(40) << s2 << "\n";
 //    Green b;
     cout << black << " •  " << white << left << setw (mellanrum) << s1;
     
-    ((cout << black << " •  " << white << setw (mellanrum) << s ), ...);
+    ((cout << setw (mellanrum) << black << " •  " << white << setw (mellanrum) << left << s ), ...);
     cout << setw (0);
     
     if constexpr (endline)
