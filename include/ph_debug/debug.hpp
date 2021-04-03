@@ -18,9 +18,9 @@ struct _debug {
     }
 };
 
-[[nodiscard]] auto debug (string called = __builtin_FUNCTION ()) -> _debug {
-    return {move (called)};
-}
+//[[nodiscard]] auto debug (string called = __builtin_FUNCTION ()) -> _debug {
+//    return {move (called)};
+//}
 
 #define debug(x) IF_ELSE(x)(auto _##__COUNTER__ = debug (__PRETTY_FUNCTION__))();
 
