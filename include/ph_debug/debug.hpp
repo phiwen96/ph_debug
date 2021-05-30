@@ -53,9 +53,9 @@ void out (int shiftFirstLeft, auto&& s1, auto&&... s) {
 //    cout << s << internal << std::setfill('*') << setw(40) << s2 << "\n";
 //    Green b;
     
-    cout <<  black << " •  " << white  << left << setw (70) << s1;
+    cout <<  ph::color::black << " •  " << ph::color::white  << left << setw (70) << s1;
 //    cout << left << setw (10);
-    ((cout << black << " •  " << white << left << setw (30) << s), ...);
+    ((cout << ph::color::black << " •  " << ph::color::white << left << setw (30) << s), ...);
     cout << setw (0);
     
     if constexpr (endline)
